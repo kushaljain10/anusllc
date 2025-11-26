@@ -35,9 +35,6 @@ export default function App() {
         <img src="/logo.png" alt="Anus LLC Logo" className="logo" />
         <h1 className="hero-title">ANUS LLC</h1>
         <p className="hero-sub">“A Wyoming Limited Liability Company”</p>
-        <a href="#content" className="btn-enter">
-          ENTER
-        </a>
         <a
           href="https://x.com/i/communities/1993625715208552611"
           className="btn-join"
@@ -108,7 +105,7 @@ export default function App() {
       <footer className="footer">
         <p>
           © 2025 Anus LLC | All Rights Reserved | Wyoming Registered Agent paid
-          in $ANUS | Twitter: @anusllc | Whitepaper: there isn’t one, grow up
+          in $ANUS | Whitepaper: there isn’t one, grow up
         </p>
       </footer>
     </div>
