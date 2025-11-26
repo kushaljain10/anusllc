@@ -1,6 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function App() {
+  const CONTRACT_ADDRESS = "FQFG4tnMAiAZaFKqRcSNY6J6vZyLkW2GpbSLERFePXKh";
+  const [toastVisible, setToastVisible] = useState(false);
   useEffect(() => {
     const handler = () => {
       const sel = window.getSelection?.();
@@ -24,8 +26,15 @@ export default function App() {
     return () => document.removeEventListener("selectionchange", handler);
   }, []);
 
-  const handleCopyAlert = () => {
-    alert("cope");
+  const handleCopyCA = async () => {
+    try {
+      await navigator.clipboard.writeText(CONTRACT_ADDRESS);
+      setToastVisible(true);
+      setTimeout(() => setToastVisible(false), 1200);
+    } catch (e) {
+      setToastVisible(true);
+      setTimeout(() => setToastVisible(false), 1200);
+    }
   };
 
   return (
@@ -68,9 +77,9 @@ export default function App() {
           &nbsp;&nbsp;&nbsp;&nbsp; Supply: 1,000,000,000
         </p>
         <p className="contract">
-          <code>FQFG4tnMAiAZaFKqRcSNY6J6vZyLkW2GpbSLERFePXKh</code>
+          <code>{CONTRACT_ADDRESS}</code>
         </p>
-        <button className="btn-copy" onClick={handleCopyAlert}>
+        <button className="btn-copy" onClick={handleCopyCA}>
           Copy CA
         </button>
       </section>
@@ -108,6 +117,9 @@ export default function App() {
           in $ANUS | Whitepaper: there isn’t one, grow up
         </p>
       </footer>
+      {toastVisible && (
+        <div className="toast" role="status" aria-live="polite">CA copied</div>
+      )}
     </div>
   );
 }
